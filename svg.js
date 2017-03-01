@@ -1,5 +1,7 @@
 function main() {
     var s = document.querySelector("#svg");
+    var c = document.querySelector("#clear");
+
     var namespace = "http://www.w3.org/2000/svg";
     var prevX, prevY;
 
@@ -27,7 +29,15 @@ function main() {
         prevY = y;
     }
 
+    function clear() {
+        while (s.firstChild) {
+            s.removeChild(s.firstChild);
+        }
+        prevX = prevY = undefined;
+    }
+
     s.addEventListener("click", clickHandler);
+    c.addEventListener("click", clear);
 }
 
 window.onload = main;
